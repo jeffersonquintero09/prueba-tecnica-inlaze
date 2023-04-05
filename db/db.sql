@@ -1,0 +1,18 @@
+CREATE TABLE messages (
+  id UUID PRIMARY KEY,
+  user_id UUID NOT NULL,
+  title VARCHAR(255) NOT NULL,
+  content TEXT NOT NULL,
+  comments JSONB NOT NULL DEFAULT '[]'::JSONB,
+  reactions JSONB NOT NULL DEFAULT '[]'::JSONB,
+  created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
+);
+
+CREATE TABLE users (
+  id UUID PRIMARY KEY,
+  username TEXT NOT NULL,
+  email TEXT NOT NULL,
+  password TEXT NOT NULL,
+  fullname TEXT NOT NULL,
+  created_at TIMESTAMPTZ DEFAULT NOW()
+);
